@@ -17,12 +17,14 @@ O primeiro caso de uso funcional ainda está por definir. Antes de implementar o
 - [Referências técnicas](Link%20de%20documenta%C3%A7%C3%A3o.md) — documentação oficial e pacotes em avaliação.
 - [Instruções para assistentes de IA](AGENTS.md) — prioridades e regras de colaboração.
 
-## Direcção tecnológica em avaliação
+## Tecnologias e estado actual
 
 - **Pi Coding Agent:** motor inicial.
-- **CopilotKit + AG-UI:** direcção para interface e comunicação, ainda por validar com o Pi.
+- **CopilotKit:** interface gráfica seleccionada e necessária na Fase 1; uma experiência apenas de terminal não satisfaz o objectivo.
+- **AG-UI:** protocolo previsto para a comunicação, com a ligação efectiva entre Pi e CopilotKit ainda por validar.
+- **OpenUI (openui.com):** investigado como alternativa ou complemento para UI generativa, mas não seleccionado nesta fase.
 - **`pi-agui`:** template comunitário Pi + AG-UI para estudar; não é uma dependência aprovada nem inclui a interface CopilotKit.
-- **Pi Outpost:** alternativa/referência de interface Web a comparar, sem decisão de adopção.
+- **Pi Outpost:** referência técnica de interface Web, não é a interface seleccionada.
 
 Nenhum pacote comunitário deve ser instalado sem rever código, licença, manutenção, dependências, compatibilidade e permissões.
 

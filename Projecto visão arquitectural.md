@@ -10,7 +10,7 @@ Estado: Arquitectura conceptual — preparação para implementação
 ---
 
 > [!important] Âmbito e sequência actuais
-> Este documento descreve a visão futura do framework. **A prioridade agora é apenas transformar o Pi numa assistente pessoal funcional**, validar a experiência e só depois evoluir para o framework. CopilotKit + AG-UI é a direcção de interface a avaliar; o template comunitário `pi-agui` é uma referência concreta, mas não uma integração oficial nem uma dependência aprovada. O primeiro caso de uso ainda está por definir. Consultar [[Fase 1 - Assistente pessoal]] e [[AGENTS]] para o âmbito e as regras de trabalho actuais.
+> Este documento descreve a visão futura do framework. **A prioridade agora é transformar o Pi numa assistente pessoal funcional com interface gráfica CopilotKit ligada ao Pi**; uma experiência apenas de terminal não chega. A interface CopilotKit está seleccionada, mas a integração Pi ↔ AG-UI ainda precisa de validação. O template comunitário `pi-agui` é uma referência, não uma integração oficial nem uma dependência aprovada. OpenUI de openui.com foi investigado, mas não seleccionado. O primeiro caso de uso ainda está por definir. Consultar [[Fase 1 - Assistente pessoal]] e [[AGENTS]] para o âmbito e as regras de trabalho actuais.
 
 1. Visão geral
 
@@ -147,7 +147,7 @@ A plataforma Web não deverá aceder directamente ao computador do utilizador.
 
 B. Interface — CopilotKit
 
-O CopilotKit será avaliado como solução para a interface de conversação e interacção com os agentes.
+Para a Fase 1, o CopilotKit está seleccionado como interface gráfica necessária para conversar com o Pi. A interface de terminal pode continuar a ser usada para desenvolvimento, mas não satisfaz sozinha a experiência pretendida. A integração efectiva com o Pi ainda precisa de validação.
 
 Funcionalidades pretendidas:
 
@@ -494,7 +494,7 @@ Cada camada deverá utilizar o mecanismo mais adequado.
 
 8. Interface e integração Pi
 
-Para a primeira assistente, Pi é o motor; CopilotKit + AG-UI é a direcção de interface e protocolo em avaliação. A compatibilidade concreta e a experiência de utilizador ainda têm de ser validadas num caso de uso pequeno.
+Para a primeira assistente, Pi é o motor e CopilotKit é a interface gráfica seleccionada. AG-UI é a direcção para a comunicação agente-interface. A integração concreta tem de ser validada num caso de uso pequeno; uma interface apenas de terminal não satisfaz o requisito.
 
 8.1. Template comunitário `pi-agui`
 
@@ -511,7 +511,11 @@ Portanto, não se deve assumir que seja necessário escrever todo o adaptador de
 
 O CopilotKit alerta que o seu `BuiltInAgent` chama directamente o modelo e substitui um agente existente; não é a opção adequada quando a intenção é encaminhar a conversa para Pi.
 
-8.2. Fluxo mínimo proposto
+8.2. OpenUI (openui.com)
+
+OpenUI oferece um Agent Interface React para uma experiência de chat completa ligada a um backend existente e também um renderer OpenUI Lang que pode ser incorporado em CopilotKit. Foi investigado, mas não seleccionado para a Fase 1. Poderá ser reconsiderado se houver um requisito de interface generativa ou se CopilotKit não cumprir os requisitos; não há ainda integração Pi pronta confirmada.
+
+8.3. Fluxo mínimo proposto
 
 1. O frontend envia a mensagem ao runtime local.
 2. O runtime associa a conversa a uma sessão Pi.
@@ -624,7 +628,9 @@ As seguintes regras deverão orientar todas as decisões técnicas:
 Decisão| Estado
 Construir primeiro uma assistente pessoal baseada no Pi| Prioridade actual
 Desenvolver um framework independente de motor| Visão futura, depois da validação
-Utilizar CopilotKit + AG-UI| Direcção seleccionada; integração por validar
+Utilizar CopilotKit como interface gráfica da Fase 1| Definido; integração Pi por validar
+Utilizar AG-UI na ligação agente-interface| Direcção seleccionada; mapeamento com Pi por validar
+Utilizar OpenUI de openui.com| Investigado; não seleccionado para a Fase 1
 Estudar o template `pi-agui`| Referência comunitária; não aprovado para adopção
 Comparar Pi Outpost como alternativa de interface| Investigação, sem decisão
 Desenvolver o Integrador| Visão futura, fora da Fase 1
@@ -640,8 +646,8 @@ Fase 1
 - Qual é o primeiro caso de uso funcional?
 - O template `pi-agui` é compatível com a versão actual mantida do Pi?
 - Que partes do template podem ser reutilizadas sem adoptar a sua UI própria?
-- Qual o esforço para ligar Pi a CopilotKit através de AG-UI?
-- Qual a interface mais simples que satisfaz o caso de uso?
+- Como ligar Pi a CopilotKit através de AG-UI e se é necessário um adaptador próprio?
+- O template `pi-agui` pode acelerar essa ligação com segurança e compatibilidade?
 - Que ferramentas e permissões são estritamente necessárias?
 - O caso de uso precisa de memória pessoal para além das sessões Pi?
 - Que configuração de execução é adequada no Windows?
@@ -670,7 +676,7 @@ Liga agentes e aplicações ao mundo físico através da L.U, disponibilizando u
 
 Permite criar, configurar e gerir assistentes através de uma interface Web, enquanto os runtimes locais executam as tarefas e controlam os recursos autorizados.
 
-O Pi será o primeiro motor. CopilotKit + AG-UI é a direcção de interface a validar. O Integrador e a L.U pertencem a fases futuras.
+O Pi será o primeiro motor. CopilotKit é a interface gráfica seleccionada para a Fase 1; a integração via AG-UI será validada. O Integrador e a L.U pertencem a fases futuras.
 
 Declaração central do projecto
 

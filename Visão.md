@@ -10,7 +10,7 @@
 **Linguagem principal do núcleo:** TypeScript
 
 > [!important] Âmbito actual
-> A prioridade imediata é transformar o Pi numa assistente pessoal funcional. O framework, a plataforma Web de gestão, os múltiplos agentes, a voz e as integrações IoT são objectivos futuros. Consultar [[Fase 1 - Assistente pessoal]] para as decisões actuais. A implementação ainda não começou; primeiro será escolhido um caso de uso funcional.
+> A prioridade imediata é transformar o Pi numa assistente pessoal funcional com uma interface gráfica CopilotKit ligada ao Pi; uma experiência apenas de terminal não chega. O framework, a plataforma Web de gestão, os múltiplos agentes, a voz e as integrações IoT são objectivos futuros. Consultar [[Fase 1 - Assistente pessoal]] para as decisões actuais. A implementação ainda não começou; primeiro será escolhido um caso de uso funcional.
 
 ---
 
@@ -245,7 +245,7 @@ A distinção é importante:
 - **Integrações:** comunicação com aplicações e dispositivos.
 - **JARVIS:** identidade, interface e experiência da assistente pessoal.
 
-Não é obrigatório que a interface final seja a interface de terminal original do Pi.
+Para a Fase 1, a interface de terminal original do Pi não é suficiente: a experiência pretendida exige uma interface gráfica CopilotKit ligada ao Pi. O terminal pode continuar a ser utilizado para desenvolvimento e diagnóstico.
 
 Poderemos explorar uma interface própria ou reutilizar uma interface existente, recorrendo aos mecanismos de RPC, SDK ou outros meios de comunicação disponibilizados pelo Pi.
 
@@ -348,7 +348,7 @@ O desenvolvimento será feito progressivamente, sem prazos artificiais nem imple
 
 1. Definir em conjunto um primeiro caso de uso pequeno.
 2. Derivar desse caso de uso as ferramentas e permissões mínimas.
-3. Comparar a integração Pi + CopilotKit + AG-UI com o template comunitário `pi-agui` e outras alternativas relevantes.
+3. Validar a integração Pi + CopilotKit + AG-UI, usando o template comunitário `pi-agui` como referência após revisão.
 4. Implementar apenas o percurso necessário para esse caso de uso.
 5. Testar o comportamento real, incluindo autorização e erros.
 6. Decidir sobre memória pessoal persistente apenas quando houver uma necessidade concreta.
@@ -383,8 +383,9 @@ Navegação Web, tarefas multi-etapa, voz e dispositivos físicos só serão cri
 - A prioridade será reutilizar soluções existentes.
 - MCP, APIs, CLI, RPC e outros mecanismos serão utilizados conforme a necessidade.
 - A primeira fase concentra-se em transformar o Pi numa assistente pessoal funcional no computador.
-- CopilotKit + AG-UI é a direcção de interface/protocolo a avaliar; a ligação concreta ao Pi ainda não foi validada.
+- CopilotKit é a interface gráfica seleccionada para a Fase 1; AG-UI é a direcção de protocolo, mas a ligação concreta ao Pi ainda não foi validada.
 - O template comunitário `pi-agui` é uma referência a inspeccionar, não uma integração ou dependência aprovada.
+- OpenUI de openui.com foi investigado, mas não seleccionado para esta fase.
 - O framework e as integrações com dispositivos físicos são posteriores à validação da assistente.
 - A solução deverá privilegiar software gratuito e open-source.
 
@@ -393,7 +394,7 @@ Navegação Web, tarefas multi-etapa, voz e dispositivos físicos só serão cri
 - Sistema operativo e configuração exacta do computador.
 - Modelo de linguagem e fornecedor de API.
 - Primeiro caso de uso funcional.
-- Interface inicial e forma de integrar Pi com AG-UI/CopilotKit.
+- Forma de integrar Pi com AG-UI/CopilotKit.
 - Ferramentas estritamente necessárias para esse caso de uso.
 - Necessidade de memória para além das sessões do Pi.
 - Permissões e isolamento adequados ao caso de uso.

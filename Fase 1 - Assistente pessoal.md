@@ -16,7 +16,7 @@ Esta fase **não** tem como objectivo construir já o framework geral, a platafo
 ```text
 Utilizador
     ↕
-Interface de conversa — CopilotKit (opção a validar)
+Interface gráfica obrigatória — CopilotKit (seleccionado)
     ↕ AG-UI
 Runtime local — Node.js / TypeScript
     ├── Integração AG-UI ↔ Pi
@@ -33,12 +33,16 @@ Runtime local — Node.js / TypeScript
 ### Responsabilidades
 
 - **Pi:** motor do agente; gere o ciclo de execução, contexto, sessões e chamadas a ferramentas.
-- **CopilotKit:** opção para a interface de conversa. A integração concreta com o backend Pi ainda tem de ser provada.
+- **CopilotKit:** interface gráfica seleccionada para conversar com o Pi nesta fase. Uma interface apenas de terminal não satisfaz o objectivo.
 - **AG-UI:** protocolo de eventos entre agente e interface.
 - **Runtime local:** mantém o Pi junto dos recursos do computador e aplica os controlos de acesso.
 - **Memória pessoal:** informação duradoura escolhida pelo utilizador; distinta do histórico de uma sessão Pi.
 
-Não utilizar o `BuiltInAgent` do CopilotKit para esta integração: a documentação indica que esse agente chama directamente o modelo e substituiria o Pi em vez de o ligar à interface.
+O CopilotKit tem de encaminhar as conversas para o Pi; não utilizar o seu `BuiltInAgent`, porque esse agente chama directamente o modelo e substituiria o Pi em vez de o ligar à interface. A ligação Pi ↔ AG-UI/CopilotKit continua por validar e poderá exigir um adaptador ou reutilização de código após revisão.
+
+### OpenUI
+
+O OpenUI de [openui.com](https://www.openui.com/docs) não é o mesmo que Open WebUI. A documentação descreve duas possibilidades: o Agent Interface React, que fornece uma interface de chat completa e liga a um backend existente, e o OpenUI Lang, que permite renderizar componentes generativos dentro de uma interface existente, incluindo CopilotKit. O OpenUI não foi seleccionado para esta fase; poderá ser reconsiderado se surgir uma necessidade concreta de UI generativa ou se a integração CopilotKit não cumprir os requisitos.
 
 ## 3. Integrações investigadas
 
@@ -50,7 +54,7 @@ O pacote [`pi-agui`](https://pi.dev/packages/pi-agui) gera um template de aplica
 
 ### Pi Outpost
 
-[`pi-outpost`](https://github.com/laurentftech/pi-outpost) fornece uma interface Web para o Pi. É uma alternativa para testar o uso Web do Pi e uma referência de UX, mas não equivale à combinação CopilotKit + AG-UI pretendida.
+[`pi-outpost`](https://github.com/laurentftech/pi-outpost) fornece uma interface Web para o Pi e pode servir de referência técnica, mas não é a interface seleccionada para a Fase 1.
 
 ### Pesquisa Web
 
@@ -106,6 +110,8 @@ A aprovação humana é um controlo de produto; não substitui sandbox ou privil
 - A2A, A2UI e construtor Code-first/No-code.
 - Automatização irrestrita do computador.
 
+A utilização do Pi no terminal pode continuar útil para desenvolvimento e diagnóstico, mas não substitui a interface gráfica CopilotKit exigida como parte da experiência desta fase.
+
 ## 8. Decisões e questões em aberto
 
 ### Definido
@@ -113,14 +119,15 @@ A aprovação humana é um controlo de produto; não substitui sandbox ou privil
 - A primeira meta é transformar o Pi numa assistente pessoal funcional.
 - O framework e a abstracção para múltiplos motores ficam para depois da validação.
 - Pi é o motor inicial.
-- CopilotKit + AG-UI é a direcção de interface/protocolo a avaliar; a integração não está ainda validada.
+- CopilotKit está seleccionado como interface gráfica necessária nesta fase; a integração Pi ↔ AG-UI/CopilotKit ainda não está validada.
 - O `pi-agui` é uma referência concreta a inspeccionar, não uma decisão de adopção.
+- O OpenUI de openui.com foi investigado como alternativa/complemento, mas não foi seleccionado.
 - O trabalho deve avançar devagar, em passos curtos, sem começar a implementação antes da escolha do primeiro caso de uso.
 
 ### Ainda por decidir
 
 - Qual é o primeiro caso de uso funcional.
-- Se a interface inicial será CopilotKit, Pi Outpost ou uma experiência temporária mais simples.
+- Como ligar Pi ao CopilotKit através de AG-UI e se é necessário um adaptador próprio.
 - Se o template `pi-agui` é compatível, seguro e útil como referência.
 - Qual o modelo/provedor, sistema operativo e forma de execução.
 - Quais as ferramentas mínimas exigidas pelo caso de uso.
@@ -140,6 +147,9 @@ Escolher **um** primeiro caso de uso pequeno e concreto. Só depois de o definir
 - [Pi no Windows](https://docs.pi.dev/latest/windows)
 - [Documentação do CopilotKit](https://docs.copilotkit.ai/)
 - [Quickstart do CopilotKit](https://docs.copilotkit.ai/quickstart)
+- [OpenUI — documentação](https://www.openui.com/docs)
+- [OpenUI Agent Interface](https://www.openui.com/docs/agent/getting-started/introduction)
+- [OpenUI — integrações](https://www.openui.com/docs/integrations)
 - [Visão geral AG-UI](https://docs.ag-ui.com/introduction)
 - [Integrações AG-UI](https://docs.ag-ui.com/integrations)
 - [Template `pi-agui` no catálogo Pi](https://pi.dev/packages/pi-agui)

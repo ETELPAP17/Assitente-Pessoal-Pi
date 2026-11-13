@@ -8,8 +8,9 @@ Este documento regista resultados de pesquisa e decisões. A definição actual 
 |---|---|---|
 | Objectivo imediato | Definido | Transformar o Pi numa assistente pessoal funcional; não começar pelo framework. |
 | Pi | Escolhido como motor inicial | Usa sessões, ferramentas, extensões e SDK; confirmar versões concretas antes da integração. |
-| Interface | Em avaliação | CopilotKit é a direcção prevista; Pi Outpost é alternativa/referência. |
+| Interface gráfica da Fase 1 | Definida | CopilotKit é obrigatório para a experiência desta fase; terminal apenas não chega. |
 | AG-UI | Em avaliação para a ligação agente-interface | É protocolo de eventos, não uma integração automática de qualquer agente. |
+| OpenUI de openui.com | Investigado, não seleccionado | Agent Interface pode fornecer chat completo; OpenUI Lang também pode renderizar UI generativa dentro de CopilotKit. |
 | `pi-agui` | Referência a inspeccionar | Template comunitário Pi + AG-UI com frontend próprio, não CopilotKit. |
 | Primeiro caso de uso | Por definir | Defini-lo antes de escolher ferramentas e iniciar implementação. |
 | Memória de longo prazo | Adiada | As sessões Pi cobrem o histórico conversacional; memória pessoal só se o caso de uso justificar. |
@@ -27,6 +28,7 @@ Este documento regista resultados de pesquisa e decisões. A definição actual 
 ### CopilotKit e AG-UI
 
 - CopilotKit fornece componentes de interface e ligação a agentes.
+- A documentação do OpenUI descreve o Agent Interface React como uma UI de chat completa ligada a um backend existente; também documenta a integração de OpenUI Lang em CopilotKit. Não foi identificada uma ligação pronta ao Pi.
 - O `BuiltInAgent` do CopilotKit é um agente próprio que chama o modelo; não deve ser escolhido para a integração se o objectivo é executar Pi.
 - AG-UI padroniza a comunicação orientada a eventos entre frontend e backend de agente.
 - A lista oficial de integrações AG-UI não basta para concluir que Pi tenha suporte de primeira parte. O template `pi-agui` encontrado no catálogo é comunitário.
@@ -41,7 +43,7 @@ Este documento regista resultados de pesquisa e decisões. A definição actual 
 
 ### Outras opções Pi investigadas
 
-- `pi-outpost`: interface Web para Pi; README descreve configuração segura inicial, em modo de leitura e sem Bash. Pode servir para testar a experiência, mas não é CopilotKit + AG-UI.
+- `pi-outpost`: interface Web para Pi; README descreve configuração segura inicial, em modo de leitura e sem Bash. Pode servir de referência, mas não substitui a interface CopilotKit seleccionada.
 - `pi-web-search` e `Pi Web Access`: candidatos para pesquisa/consulta Web; comparar capacidades, modelo/provedor exigidos, manutenção e permissões quando o caso de uso pedir pesquisa.
 - `pi-code` e `@gavin-hu/my-pi-agent`: pacotes abrangentes de personalização; não adoptar por inteiro sem rever o código e seleccionar apenas as capacidades necessárias.
 - Catálogo de modelos Pi: usar para comparar opções depois de serem conhecidos os requisitos e o orçamento; presença no catálogo não significa recomendação.
@@ -50,7 +52,7 @@ Este documento regista resultados de pesquisa e decisões. A definição actual 
 
 | Tema | Estado actual | Próxima verificação |
 |---|---|---|
-| Ligação Pi–CopilotKit | Não validada | Confirmar contrato AG-UI/CopilotKit e comparar com o template `pi-agui`. |
+| Ligação Pi–CopilotKit | Interface escolhida; integração por validar | Confirmar contrato AG-UI/CopilotKit e avaliar se o template `pi-agui` ajuda na ligação ao Pi. |
 | Template `pi-agui` | Útil como referência, compatibilidade por confirmar | Inspeccionar código/dependências e verificar com a versão mantida do Pi. |
 | Segurança de ferramentas | Risco confirmado | Definir conjunto mínimo, limites locais e aprovações após escolher o caso de uso. |
 | Memória pessoal | Não especificada | Não escolher armazenamento até haver requisito concreto. |

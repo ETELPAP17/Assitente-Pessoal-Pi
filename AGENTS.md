@@ -21,7 +21,8 @@
 
 - Reutilizar soluções existentes, mas rever código, licença, manutenção, dependências e permissões antes de as adoptar.
 - O Pi é o motor inicial; o framework independente de motor é uma fase posterior.
-- CopilotKit + AG-UI é uma direcção a validar. Não presumir que qualquer template comunitário usa CopilotKit ou constitui integração oficial.
+- CopilotKit é a interface gráfica seleccionada para a Fase 1; uma experiência apenas de terminal não satisfaz o objectivo. Validar a ligação Pi ↔ AG-UI/CopilotKit antes de afirmar que existe suporte pronto.
+- OpenUI de openui.com foi investigado, mas não seleccionado para a Fase 1; não confundir com Open WebUI.
 - O pacote `pi-agui` é um template comunitário em avaliação, não uma dependência aprovada.
 - O Pi executa ferramentas com as permissões do processo e não é uma sandbox. Aplicar privilégio mínimo e autorização fora do LLM.
 - Separar o histórico de sessões Pi de uma eventual memória pessoal de longo prazo.
