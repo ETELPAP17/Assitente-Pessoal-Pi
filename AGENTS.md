@@ -32,4 +32,5 @@
 - Escrever documentação em português, seguindo a grafia e o estilo dos documentos existentes.
 - Actualizar documentação directamente relacionada quando uma decisão de projecto mudar.
 - Preservar os objectivos de longo prazo, marcando-os como futuros quando necessário.
-- Este directório é actualmente um vault de documentação do Obsidian, não um checkout Git. Não afirmar que alterações locais foram enviadas ao GitHub.
+- Este directório é o checkout Git do repositório do projecto. O vault `Projecto PAF` é uma pasta local separada; alterações no vault não são publicadas automaticamente neste repositório.
+- Não afirmar que alterações foram enviadas ao GitHub sem confirmar que o commit e o push terminaram com sucesso.
